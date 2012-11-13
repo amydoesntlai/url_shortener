@@ -1,0 +1,4 @@
+<h1>Shortened Url</h1>
+
+Original URL: <%= @shortened_url.original_url %><br />
+Shortened URL: <%= link_to 'http://localhost:3000/' + @shortened_url.new_url, @shortened_url.original_url %>
