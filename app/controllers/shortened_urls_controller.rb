@@ -13,6 +13,8 @@ class ShortenedUrlsController < ApplicationController
     respond_to do |format|
       if @shortened_url.save
         format.html { redirect_to @shortened_url }
+      else
+        format.html { render :action => 'new' }
       end
     end
   end
@@ -24,6 +26,10 @@ class ShortenedUrlsController < ApplicationController
   def original
     @shortened_url = ShortenedUrl.find_by_new_url(params[:new_url])
     redirect_to @shortened_url.original_url
+    @shortened_url.increment!(:visit_count)
+  end
+
+  def index
   end
 
 end

@@ -1,4 +1,6 @@
 UrlShortener::Application.routes.draw do
+  get "shortened_urls/index"
+
   get "shortened_urls/create"
 
   get "shortened_urls/show"
