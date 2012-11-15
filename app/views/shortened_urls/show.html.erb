@@ -2,3 +2,5 @@
 
 Original URL: <%= @shortened_url.original_url %><br />
 Shortened URL: <%= link_to 'http://localhost:3000/' + @shortened_url.new_url, @shortened_url.original_url %>
+
+<%= link_to 'Back', shortened_urls_path %>

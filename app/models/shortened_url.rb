@@ -1,9 +1,13 @@
 class ShortenedUrl < ActiveRecord::Base
-  attr_accessible :original_url, :new_url, :visit_count
+
+  belongs_to :user
+
+  attr_accessible :original_url, :new_url, :visit_count, :user_id
   before_validation :shorten
 
   validates :original_url, :format => { :with => /https?:\/\//, :message => "Please enter a URL in the form 'http://' or 'https://'"}
   validates :new_url, :uniqueness => true
+  validates :user, :presence => true
 
   private
 

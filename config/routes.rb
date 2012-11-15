@@ -1,13 +1,10 @@
 UrlShortener::Application.routes.draw do
-  get "shortened_urls/index"
-
-  get "shortened_urls/create"
-
-  get "shortened_urls/show"
-
-  get "shortened_urls/new"
-  resources :shortened_urls
+  resources :users do
+    resources :shortened_urls
+  end
   match '/:new_url' => 'shortened_urls#original'
+
+  root :to => 'users#index'
 
 
   # The priority is based upon order of creation:

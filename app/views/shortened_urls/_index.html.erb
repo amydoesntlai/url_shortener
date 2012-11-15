@@ -1,0 +1,16 @@
+<h3>ShortenedUrls</h3>
+
+<table>
+  <tr>
+    <th>Original URL</th>
+    <th>New URL</th>
+    <th>Times Visited</th>
+  </tr>
+<% @user.shortened_urls.each do |shortened_url| %>
+  <tr>
+    <td><%= shortened_url.original_url %></td>
+    <td><%= link_to 'http://localhost:3000/' + shortened_url.new_url, 'http://localhost:3000/' + shortened_url.new_url %></td>
+    <td><%= shortened_url.visit_count %></td>
+  </tr>
+<% end %>
+</table>

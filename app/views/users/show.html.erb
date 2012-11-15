@@ -1,0 +1,11 @@
+<h1><%= @user.name %></h1>
+
+<% if @shortened_url.errors.any? %>
+    <% @shortened_url.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+<% end %>
+
+<%= render 'shortened_urls/index'%>
+
+<%= render 'shortened_urls/form'%>
