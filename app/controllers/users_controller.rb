@@ -18,9 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def show
     @user = User.includes(:shortened_urls).find(params[:id])
     @shortened_url = ShortenedUrl.new
@@ -30,9 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to 'users_index_path' }
-    end
+    redirect_to users_path
   end
 
   def index

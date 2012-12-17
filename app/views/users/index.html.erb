@@ -1,3 +1,4 @@
+<h1>All users</h1>
 <% @users.each do |user| %>
   <div class="user">
     <h3><%= user.name %></h3>
@@ -5,8 +6,8 @@
       <%= raw truncate(user.name, length: 200, separator: '...') %>
       <br>
       <%= link_to 'Show', user %> |
-      <%= link_to 'Edit', edit_user_path(user) %> |
       <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
   </div>
 <% end %>
+<%= link_to 'new', new_user_path %>

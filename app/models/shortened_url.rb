@@ -6,7 +6,7 @@ class ShortenedUrl < ActiveRecord::Base
   before_validation :shorten
 
   validates :original_url, :format => { :with => /https?:\/\//, :message => "Please enter a URL in the form 'http://' or 'https://'"}
-  validates :new_url, :uniqueness => true
+  validates :new_url, :presence => true, :uniqueness => true
   validates :user, :presence => true
 
   private
@@ -18,7 +18,10 @@ class ShortenedUrl < ActiveRecord::Base
   end
 
   def generate_random
-    suffix = rand(36**5).to_s(36) until ShortenedUrl.find_by_new_url(suffix) == nil
+    suffix = rand(36**5).to_s(36)
+    while ShortenedUrl.find_by_new_url(suffix) != nil
+      suffix = rand(36**5).to_s(36)
+    end
     self.new_url = suffix
   end
 
